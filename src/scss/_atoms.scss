@@ -19,54 +19,54 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-/* Classes */
-.mt1 {
-	margin-top: 1rem;
-}
-.mt2 {
-	margin-top: 2rem;
-}
-.mr1 {
-	margin-right: 1rem;
-}
-.mr2 {
-	margin-right: 2rem;
-}
-.mb1 {
-	margin-bottom: 1rem;
-}
-.mb2 {
-	margin-bottom: 2rem;
-}
-.ml1 {
-	margin-left: 1rem;
-}
-.ml2 {
-	margin-left: 2rem;
-}
+/*
+Creates class for padding and margin.
+.m-{amount} which gives margin all around.
+.m-r-{amount} which gives margin-right.
+.m-y-{amount} which gives margin on the Y axis (top and bottom).
+.m-x-{amount} which gives margin on the Y axis (top and bottom).
+All the same for padding.
+*/
 
-.pt1 {
-	padding-top: 1rem;
+$spaceamounts: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10); // Adjust this to include the rem amounts you need.
+$sides: (top, bottom, left, right); // Leave this variable alone
+
+@each $space in $spaceamounts {
+	@each $side in $sides {
+		.m-#{str-slice($side, 0, 1)}-#{$space} {
+			margin-#{$side}: #{$space}rem !important;
+		}
+
+		.p-#{str-slice($side, 0, 1)}-#{$space} {
+			padding-#{$side}: #{$space}rem !important;
+		}
+	}
+
+	.p-#{$space} {
+		padding: #{$space}rem !important;
+	}
+
+	.p-y-#{$space} {
+		padding-top: #{$space}rem !important;
+		padding-bottom: #{$space}rem !important;
+	}
+
+	.p-x-#{$space} {
+		padding-right: #{$space}rem !important;
+		padding-left: #{$space}rem !important;
+	}
+
+	.m-#{$space} {
+		margin: #{$space}rem !important;
+	}
+
+	.m-y-#{$space} {
+		margin-top: #{$space}rem !important;
+		margin-bottom: #{$space}rem !important;
+	}
+
+	.m-x-#{$space} {
+		margin-right: #{$space}rem !important;
+		margin-left: #{$space}rem !important;
+	}
 }
-.pt2 {
-	padding-top: 2rem;
-}
-.pr1 {
-	padding-right: 1rem;
-}
-.pr2 {
-	padding-right: 2rem;
-}
-.pb1 {
-	padding-bottom: 1rem;
-}
-.pb2 {
-	padding-bottom: 2rem;
-}
-.pl1 {
-	padding-left: 1rem;
-}
-.pl2 {
-	padding-left: 2rem;
-}
-/* END Classes */
